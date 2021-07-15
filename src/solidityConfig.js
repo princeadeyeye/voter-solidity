@@ -6,9 +6,9 @@ import Ballot from './artifacts/contracts/Ballot.sol/Ballot.json'
 const voterAddress = "0x12Aeb4648CfDaE7589580D6f4E6C901f12800aC2"
 
   // request access to the user's MetaMask account
-  async function requestAccount() {
-    await window.ethereum.request({ method: 'eth_requestAccounts' });
-  }
+//   async function requestAccount() {
+//     await window.ethereum.request({ method: 'eth_requestAccounts' });
+//   }
 
   // call the smart contract, read the current greeting value
   export async function fetchProporsals() {

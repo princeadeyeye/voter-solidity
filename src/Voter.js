@@ -1,38 +1,38 @@
 import { fetchProporsals, vote } from './solidityConfig';
 import { useEffect, useState } from 'react';
 
-const voters = [
-    {
-        name: 'Taiye Taiwo',
-        upVote: 6,
-        downVote: 4
-    },
-    {
-        name: 'Kenny Black',
-        upVote: 7,
-        downVote: 4
-    },
-    {
-        name: 'Sunday Taiwo',
-        upVote: 6,
-        downVote: 4
-    },
-    {
-        name: 'John Mike',
-        upVote: 6,
-        downVote: 4
-    },
-    {
-        name: 'Mike Tao',
-        upVote: 6,
-        downVote: 4
-    }
-]
+// const voters = [
+//     {
+//         name: 'Taiye Taiwo',
+//         upVote: 6,
+//         downVote: 4
+//     },
+//     {
+//         name: 'Kenny Black',
+//         upVote: 7,
+//         downVote: 4
+//     },
+//     {
+//         name: 'Sunday Taiwo',
+//         upVote: 6,
+//         downVote: 4
+//     },
+//     {
+//         name: 'John Mike',
+//         upVote: 6,
+//         downVote: 4
+//     },
+//     {
+//         name: 'Mike Tao',
+//         upVote: 6,
+//         downVote: 4
+//     }
+// ]
 
 function Voter() {
     const [user, setuser] = useState([])
-    const [upVote, setupVote] = useState(0);
-    const [downVote, setdownVote] = useState(0)
+    // const [upVote, setupVote] = useState(0);
+    // const [downVote, setdownVote] = useState(0)
 
     useEffect(() => {
         fetchData()
