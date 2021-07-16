@@ -21,6 +21,8 @@
     "start": "npx hardhat compile && react-scripts start",
     "build": "npx hardhat compile && react-scripts build",
     "test": "react-scripts test",
+    "local-deploy": "npx hardhat run scripts/deploy.js --network localhost",
+    "rinkeby-deploy": "npx hardhat run scripts/deploy.js --network rinkeby",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

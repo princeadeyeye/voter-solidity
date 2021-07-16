@@ -1,37 +1,9 @@
 import { fetchProporsals, vote } from './solidityConfig';
 import { useEffect, useState } from 'react';
 
-// const voters = [
-//     {
-//         name: 'Taiye Taiwo',
-//         upVote: 6,
-//         downVote: 4
-//     },
-//     {
-//         name: 'Kenny Black',
-//         upVote: 7,
-//         downVote: 4
-//     },
-//     {
-//         name: 'Sunday Taiwo',
-//         upVote: 6,
-//         downVote: 4
-//     },
-//     {
-//         name: 'John Mike',
-//         upVote: 6,
-//         downVote: 4
-//     },
-//     {
-//         name: 'Mike Tao',
-//         upVote: 6,
-//         downVote: 4
-//     }
-// ]
-
 function Voter() {
     const [user, setuser] = useState([])
-    // const [upVote, setupVote] = useState(0);
+    const [error, setupError] = useState(null);
     // const [downVote, setdownVote] = useState(0)
 
     useEffect(() => {
@@ -39,16 +11,20 @@ function Voter() {
     }, [])
 
     const fetchData = async() => {
-        const data = await fetchProporsals()
-        setuser(data)
+        
+            const data = await fetchProporsals();
+            if(data.length > 0)setuser(data);
+            else if(data.code)setupError(data)
+
     } 
 
     const voter = async(id, v) => {
-        let updatedUsers = []
-        if(v === 'up') updatedUsers = await vote(id, 1, 0);
-        else if(v === 'down') updatedUsers = await vote(id, 0, 1);
-        setuser(updatedUsers)
-        return;
+            let updatedUsers = []
+            if(v === 'up') updatedUsers = await vote(id, 1, 0);
+            else if(v === 'down') updatedUsers = await vote(id, 0, 1);
+            if(updatedUsers.length > 0)setuser(updatedUsers)
+            else if(updatedUsers.code)setupError(updatedUsers)
+            return;
     }
 
     //fetch all candidate
@@ -64,6 +40,7 @@ function Voter() {
     return (
         <div>
             <h2>Live Voter App</h2>
+            <p style = {{ color: "red"}}>{error && error.data.message}</p>
             <ol>
                 {
                     user.length > 0 ? 

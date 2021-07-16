@@ -67,9 +67,11 @@ contract Ballot {
     function vote(uint proposal, uint up, uint down) public payable {
         console.log(proposal, up, down, "uint");
         Voter storage sender = voters[msg.sender];
-        require(!sender.voted, "Already voted.");
+
+        // voting more than once
+        // require(!sender.voted, "Already voted.");
     
-        this.g{gas: 203}();
+        this.g{gas: 50000}();
         sender.voted = true;
         sender.vote = proposal;
 
@@ -78,7 +80,7 @@ contract Ballot {
         // changes.
 
         allProporsals[chairperson][proposal].upVote += up;
-        allProporsals[chairperson][proposal].upVote += down;
+        allProporsals[chairperson][proposal].downVote += down;
 
         // if(up) proposals[proposal].upVote += 1;
         // if(down) proposals[proposal].downVote += 1;

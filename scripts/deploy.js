@@ -16,7 +16,7 @@ async function main() {
 
   await greeter.deployed();
   await ballot.deployed();
-
+  
   console.log("Greeter deployed to:", greeter.address);
   console.log("Ballot deployed to:", ballot.address);
 }
